@@ -4,11 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ROI Calculator</title>
+  <!-- Google Fonts: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="calculator-container">
-    <div class="calculator left-section">
+    <div class="calculator current-logic">
       <h2>Operational Cost Calculator</h2>
 
       <label for="orders">Monthly Orders: <span id="orderValue">250</span></label>
@@ -39,10 +41,15 @@
       </div>
     </div>
 
-    <div class="calculator right-section">
-      <h2>ROI & Zenstores Pricing</h2>
-      <p><strong>Zenstores Cost: £<span id="zenstoresPrice">0</span></strong></p>
-      <p><strong>ROI: <span id="roiRatio">0</span>x</strong></p>
+    <div class="calculator zenstores-pricing">
+      <h2>Zenstores Pricing Estimate</h2>
+      <p>Based on your monthly shipments:</p>
+      <p><strong>Starts from: £<span id="zenstoresPrice">0</span></strong></p>
+      <div class="roi-calculator">
+        <h3>Estimated ROI</h3>
+        <p><span id="roiMultiplier">0</span> x ROI</p>
+        <p><small>Based on cheapest pricing plan and cost savings</small></p>
+      </div>
     </div>
   </div>
 
