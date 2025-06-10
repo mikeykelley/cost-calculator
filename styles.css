@@ -96,14 +96,31 @@ input[type="number"] {
   line-height: 1.4;
 }
 
+/* Zenstores Pricing & ROI panel styling with green theme */
 .zenstores-pricing {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   padding: 32px 24px;
   font-size: 18px;
-  color: #2F855A; /* example green color */
-  background-color: #DFF6DD; /* light green background */
-  border-radius: 12px;
+  /* incomplete in your snippet — you can complete if needed */
 }
 
+/* New ROI box styling */
+.roi-box {
+  background-color: #E6F4EA; /* Light green background */
+  border: 2px solid #80CFA9; /* Green border */
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 24px;
+  font-size: 18px;
+  color: #052424;
+  box-shadow: 0 4px 12px rgba(5, 36, 36, 0.1);
+}
+
+.roi-box h3 {
+  margin-top: 0;
+  color: #0B8457; /* Deeper green for heading */
+  font-size: 22px;
+  font-weight: 700;
+}
