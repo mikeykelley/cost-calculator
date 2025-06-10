@@ -6,25 +6,27 @@ body {
   justify-content: center;
   padding: 40px;
   margin: 0;
+  min-height: 100vh;
 }
 
 .calculator-container {
   display: flex;
   gap: 40px;
-  flex-wrap: wrap;
-  justify-content: center;
   max-width: 900px;
   width: 100%;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px 0;
+  box-sizing: border-box;
 }
 
 .calculator {
   border: 2px solid #FFBEAF;
   border-radius: 16px;
-  padding: 24px;
-  max-width: 420px;
-  width: 100%;
+  padding: 32px 24px;
+  width: 420px;
   background-color: #fff;
-  box-shadow: 0 4px 12px rgba(5, 36, 36, 0.1);
+  box-shadow: 0 6px 16px rgba(5, 36, 36, 0.12);
   box-sizing: border-box;
 }
 
@@ -32,23 +34,26 @@ h2 {
   color: #283CFF;
   margin-bottom: 20px;
   font-weight: 700;
+  font-size: 24px;
 }
 
 label {
   display: block;
   margin-top: 16px;
+  margin-bottom: 6px;
   font-weight: 600;
+  font-size: 14px;
 }
 
 input[type="range"],
 input[type="number"] {
   width: 100%;
-  margin-top: 6px;
+  margin-bottom: 16px;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 8px;
+  font-size: 14px;
   box-sizing: border-box;
-  font-size: 16px;
 }
 
 .result {
@@ -57,6 +62,11 @@ input[type="number"] {
   padding: 16px;
   border-radius: 12px;
   text-align: left;
+  font-size: 16px;
+}
+
+.result p {
+  margin: 6px 0;
 }
 
 .result h3 {
@@ -76,19 +86,52 @@ input[type="number"] {
   cursor: pointer;
   font-weight: 600;
   color: #283CFF;
+  outline: none;
 }
 
 .assumptions ul {
   margin: 8px 0 0 16px;
   padding: 0;
   list-style: disc;
+  line-height: 1.4;
+}
+
+.zenstores-pricing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 24px;
+  font-size: 18px;
+  color: #052424;
+  width: 280px;
+  box-sizing: border-box;
 }
 
 .zenstores-pricing p {
-  font-size: 18px;
-  margin-top: 8px;
+  margin: 8px 0;
 }
 
 .zenstores-pricing small {
   color: #666;
+  font-size: 14px;
+}
+
+/* Responsive: stack vertically on smaller screens */
+@media (max-width: 700px) {
+  .calculator-container {
+    flex-direction: column;
+    gap: 24px;
+    padding: 0 12px;
+  }
+
+  .calculator,
+  .zenstores-pricing {
+    width: 100%;
+    max-width: none;
+    padding: 24px 16px;
+  }
+
+  .zenstores-pricing {
+    padding-top: 0;
+  }
 }
