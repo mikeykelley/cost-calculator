@@ -1,9 +1,3 @@
-function updateOrderValue() {
-  const orders = parseInt(document.getElementById('orders').value);
-  document.getElementById('orderValue').textContent = orders;
-  calculateAll();
-}
-
 function calculateAll() {
   const orders = parseInt(document.getElementById('orders').value);
   const aov = parseFloat(document.getElementById('aov').value) || 0;
@@ -15,7 +9,11 @@ function calculateAll() {
   const conversionUplift = 0.10;
 
   const errorCost = orders * errorRate * aov * grossMargin;
-  const inefficiencyCost = 3 * 30 * hourlyWage;
+
+  // Example: 1.5 minutes saved per order
+  const timeSavedPerOrderHours = 1.5 / 60;
+  const inefficiencyCost = orders * timeSavedPerOrderHours * hourlyWage;
+
   const upliftOrders = orders * conversionRate * conversionUplift;
   const missedRevenue = upliftOrders * aov * grossMargin;
 
@@ -26,5 +24,3 @@ function calculateAll() {
   document.getElementById('missedRevenue').textContent = Math.round(missedRevenue).toLocaleString();
   document.getElementById('total').textContent = Math.round(total).toLocaleString();
 }
-
-updateOrderValue();
