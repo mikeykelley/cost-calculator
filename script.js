@@ -15,6 +15,17 @@ function calculateZenstoresPrice(orders) {
   return Math.min(planA, planB);
 }
 
+// Determine persona tier and message based on orders
+function getPersonaMessage(orders) {
+  if (orders < 2000) {
+    return `<strong>Startup Tier</strong>: You're running a startup-level business, focusing on establishing your operations and optimizing early growth. Zenstores can help automate key tasks and reduce errors as you scale.`;
+  } else if (orders < 10000) {
+    return `<strong>Growing Tier</strong>: Your business is growing steadily. With more orders to manage, efficiency and error prevention are crucial. Zenstores provides scalable tools to support your expanding team and processes.`;
+  } else {
+    return `<strong>Scaling Tier</strong>: You operate at enterprise scale with high order volumes. Zenstores offers advanced automation and insights to maximize ROI and keep fulfilment seamless at scale.`;
+  }
+}
+
 // Main calculation function
 function calculateAll() {
   const orders = parseInt(document.getElementById('orders').value);
@@ -27,45 +38,4 @@ function calculateAll() {
   const conversionUplift = 0.10; // +10%
 
   // 1. Cost of fulfilment errors
-  const errorCost = orders * errorRate * aov * grossMargin;
-
-  // 2. Cost of inefficiencies - 3 minutes per order
-  const inefficiencyMinutes = orders * 3;
-  const inefficiencyHours = inefficiencyMinutes / 60;
-  const inefficiencyCost = inefficiencyHours * hourlyWage;
-
-  // 3. Missed revenue from lower conversion
-  const upliftOrders = orders * conversionRate * conversionUplift;
-  const missedRevenue = upliftOrders * aov * grossMargin;
-
-  const totalSavings = errorCost + inefficiencyCost + missedRevenue;
-
-  // Update displayed costs
-  document.getElementById('errorsCost').textContent = Math.round(errorCost).toLocaleString();
-  document.getElementById('timeCost').textContent = Math.round(inefficiencyCost).toLocaleString();
-  document.getElementById('missedRevenue').textContent = Math.round(missedRevenue).toLocaleString();
-  document.getElementById('total').textContent = Math.round(totalSavings).toLocaleString();
-
-  // Calculate and update Zenstores pricing
-  const zenPrice = calculateZenstoresPrice(orders);
-document.getElementById('zenstoresPrice').textContent = Math.round(zenPrice).toLocaleString();
-
-  // Calculate and update ROI multiplier = savings / price (rounded 1 decimal)
-  let roi = 0;
-  if (zenPrice > 0) {
-    roi = totalSavings / zenPrice;
-  }
-  document.getElementById('roiMultiplier').textContent = roi.toFixed(1) + 'x';
-}
-
-// Set event listeners after DOM loads
-window.addEventListener('DOMContentLoaded', () => {
-  const ordersInput = document.getElementById('orders');
-  const aovInput = document.getElementById('aov');
-
-  ordersInput.addEventListener('input', updateOrderValue);
-  aovInput.addEventListener('input', calculateAll);
-
-  // Initialize values on load
-  updateOrderValue();
-});
+  const errorCost = orders
