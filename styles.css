@@ -42,7 +42,7 @@ label {
   margin-top: 16px;
   margin-bottom: 6px;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 input[type="range"],
@@ -52,7 +52,7 @@ input[type="number"] {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: 18px;
   box-sizing: border-box;
 }
 
@@ -78,7 +78,7 @@ input[type="number"] {
 
 .assumptions {
   margin-top: 16px;
-  font-size: 14px;
+  font-size: 18px;
   color: #333;
 }
 
