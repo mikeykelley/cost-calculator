@@ -35,16 +35,12 @@ function calculateAll() {
 
   const total = errorCost + inefficiencyCost + missedRevenue;
 
-  // Update your existing cost display
+  // Update display
   document.getElementById('errorsCost').textContent = Math.round(errorCost).toLocaleString();
   document.getElementById('timeCost').textContent = Math.round(inefficiencyCost).toLocaleString();
   document.getElementById('missedRevenue').textContent = Math.round(missedRevenue).toLocaleString();
   document.getElementById('total').textContent = Math.round(total).toLocaleString();
 
-  // Calculate and update Zenstores pricing
-  const zenPrice = calculateZenstoresPrice(orders);
-  document.getElementById('zenstoresPrice').textContent = zenPrice.toFixed(2);
-}
+  // Zenstores pricing
+  const zenPrice = calculateZenstoresPrice(
 
-// Initialise on load
-updateOrderValue();
