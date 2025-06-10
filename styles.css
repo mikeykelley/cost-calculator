@@ -142,3 +142,14 @@ input[type="number"] {
   color: #5A4000;
   box-shadow: 0 4px 12px rgba(90, 64, 0, 0.1);
 }
+/* Persona message box */
+.persona-box {
+  background-color: #FFF5D6; /* Soft yellow background */
+  border: 2px solid #FFD580; /* Golden border */
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #5A4000;
+  box-shadow: 0 4px 12px rgba(90, 64, 0, 0.1);
+}
