@@ -1,20 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Operational Cost Calculator</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="calculator">
+<div class="calculator-container">
+  <div class="calculator current-logic">
     <h2>Operational Cost Calculator</h2>
 
     <label for="orders">Monthly Orders: <span id="orderValue">250</span></label>
-    <input type="range" id="orders" min="250" max="25000" value="250" step="250" />
+    <input type="range" id="orders" min="250" max="25000" value="250" step="250" oninput="updateOrderValue()" />
 
     <label for="aov">Average Order Value (£):</label>
-    <input type="number" id="aov" value="50" />
+    <input type="number" id="aov" value="50" oninput="calculateAll()" />
 
     <div class="result">
       <p><strong>Estimated Monthly Impact:</strong></p>
@@ -24,12 +16,6 @@
       <hr>
       <h3>Total: £<span id="total">0</span></h3>
     </div>
-
-    <div class="messages" style="margin-top:20px; padding:12px; background:#f0f8ff; border-radius:8px; display:none;">
-  <h4>What this means for your business:</h4>
-  <ul id="contextualBenefits"></ul>
-  <p id="customRecommendation" style="font-weight:bold; margin-top:12px;"></p>
-</div>
 
     <div class="assumptions">
       <details>
@@ -43,6 +29,12 @@
       </details>
     </div>
   </div>
-  <script src="script.js"></script>
-</body>
-</html>
+
+  <div class="calculator zenstores-pricing">
+    <h2>Zenstores Pricing Estimate</h2>
+    <p>Based on your monthly shipments:</p>
+    <p><strong>Starts from: £<span id="zenstoresPrice">0</span></strong></p>
+    <p><small>(£79 + £0.07 per shipment) or (£159 + £0.04 per shipment)</small></p>
+  </div>
+</div>
+
