@@ -68,3 +68,17 @@ input[type="number"] {
   padding: 0;
   list-style: disc;
 }
+
+/* New styles for messages */
+
+.messages ul {
+  margin: 0;
+  padding-left: 18px;
+  color: #034078;
+  font-size: 15px;
+}
+
+.messages p {
+  color: #D1495B;
+  font-size: 16px;
+}
