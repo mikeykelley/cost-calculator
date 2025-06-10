@@ -10,7 +10,6 @@ function calculateZenstoresPrice(orders) {
   const planA = 79 + orders * 0.07;
   // Plan B: £159 + £0.04 per shipment
   const planB = 159 + orders * 0.04;
-
   return Math.min(planA, planB);
 }
 
@@ -31,8 +30,7 @@ function calculateAll() {
   const inefficiencyCost = 3 * 30 * hourlyWage;
 
   // 3. Missed revenue from lower conversion
-  const upliftOrders = orders * conversionRate * conversionUplift;
-  const missedRevenue = upliftOrders * aov * grossMargin;
+  const missedRevenue = orders * conversionRate * conversionUplift * aov * grossMargin;
 
   const total = errorCost + inefficiencyCost + missedRevenue;
 
@@ -45,6 +43,10 @@ function calculateAll() {
   // Calculate and update Zenstores pricing
   const zenPrice = calculateZenstoresPrice(orders);
   document.getElementById('zenstoresPrice').textContent = zenPrice.toFixed(2);
+
+  // Calculate ROI ratio (Total Savings / Zenstores Price)
+  const roiRatio = zenPrice > 0 ? (total / zenPrice).toFixed(1) : '0';
+  document.getElementById('roiRatio').textContent = roiRatio;
 }
 
 // Set event listeners after DOM loads
@@ -55,7 +57,6 @@ window.addEventListener('DOMContentLoaded', () => {
   ordersInput.addEventListener('input', updateOrderValue);
   aovInput.addEventListener('input', calculateAll);
 
-  // Initialize values on load
+  // Initialize on load
   updateOrderValue();
 });
-
