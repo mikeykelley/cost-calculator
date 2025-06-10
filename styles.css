@@ -96,24 +96,14 @@ input[type="number"] {
   line-height: 1.4;
 }
 
-.zenstores-pricing {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-top: 24px;
-  font-size: 18px;
-  color: #052424;
-  width: 280px;
-  box-sizing: border-box;
+.right-section p {
+  font-size: 20px;
+  margin: 12px 0;
 }
 
-.zenstores-pricing p {
-  margin: 8px 0;
-}
-
-.zenstores-pricing small {
-  color: #666;
-  font-size: 14px;
+.right-section strong {
+  color: #283CFF;
+  font-weight: 700;
 }
 
 /* Responsive: stack vertically on smaller screens */
@@ -125,13 +115,13 @@ input[type="number"] {
   }
 
   .calculator,
-  .zenstores-pricing {
+  .right-section {
     width: 100%;
     max-width: none;
     padding: 24px 16px;
   }
 
-  .zenstores-pricing {
+  .right-section {
     padding-top: 0;
   }
 }
