@@ -21,7 +21,7 @@ body {
 }
 
 .calculator {
-  border: 2px solid #FFBEAF;
+  border: 2px solid #ffbeaf;
   border-radius: 16px;
   padding: 32px 24px;
   width: 420px;
@@ -31,7 +31,7 @@ body {
 }
 
 h2 {
-  color: #283CFF;
+  color: #283cff;
   margin-bottom: 20px;
   font-weight: 700;
   font-size: 24px;
@@ -58,7 +58,7 @@ input[type='number'] {
 
 .result {
   margin-top: 24px;
-  background-color: #FFBEAF22;
+  background-color: #ffbeaf22;
   padding: 16px;
   border-radius: 12px;
   text-align: left;
@@ -71,7 +71,7 @@ input[type='number'] {
 
 .result h3 {
   margin-top: 12px;
-  color: #283CFF;
+  color: #283cff;
   font-size: 24px;
   font-weight: 700;
 }
@@ -85,7 +85,7 @@ input[type='number'] {
 .assumptions summary {
   cursor: pointer;
   font-weight: 600;
-  color: #283CFF;
+  color: #283cff;
   outline: none;
 }
 
@@ -99,8 +99,8 @@ input[type='number'] {
 .zenstores-pricing {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding-top: 24px;
+  justify-content: flex-start;
+  padding-top: 0;
   font-size: 18px;
   color: #052424;
   width: 280px;
@@ -111,9 +111,15 @@ input[type='number'] {
   margin: 8px 0;
 }
 
-.zenstores-pricing strong {
-  font-size: 24px;
-  color: #283CFF;
+.zenstores-pricing small {
+  color: #666;
+  font-size: 14px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 16px 0;
 }
 
 /* Responsive: stack vertically on smaller screens */
@@ -126,4 +132,12 @@ input[type='number'] {
 
   .calculator,
   .zenstores-pricing {
-    width: 1
+    width: 100%;
+    max-width: none;
+    padding: 24px 16px;
+  }
+
+  .zenstores-pricing {
+    padding-top: 0;
+  }
+}
