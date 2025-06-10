@@ -48,7 +48,7 @@ function calculateAll() {
 
   // Calculate and update Zenstores pricing
   const zenPrice = calculateZenstoresPrice(orders);
-  document.getElementById('zenstoresPrice').textContent = zenPrice.toFixed(2);
+document.getElementById('zenstoresPrice').textContent = Math.round(zenPrice).toLocaleString();
 
   // Calculate and update ROI multiplier = savings / price (rounded 1 decimal)
   let roi = 0;
