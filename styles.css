@@ -11,26 +11,25 @@ body {
 .calculator-container {
   display: flex;
   gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
   max-width: 900px;
   width: 100%;
-  justify-content: center;
-  align-items: flex-start;
-  flex-wrap: wrap;
 }
 
 .calculator {
-  border: 2px solid #ffbeaf;
+  border: 2px solid #FFBEAF;
   border-radius: 16px;
   padding: 24px;
-  width: 100%;
   max-width: 420px;
+  width: 100%;
   background-color: #fff;
   box-shadow: 0 4px 12px rgba(5, 36, 36, 0.1);
   box-sizing: border-box;
 }
 
 h2 {
-  color: #283cff;
+  color: #283CFF;
   margin-bottom: 20px;
   font-weight: 700;
 }
@@ -41,8 +40,8 @@ label {
   font-weight: 600;
 }
 
-input[type='range'],
-input[type='number'] {
+input[type="range"],
+input[type="number"] {
   width: 100%;
   margin-top: 6px;
   padding: 8px;
@@ -54,7 +53,7 @@ input[type='number'] {
 
 .result {
   margin-top: 24px;
-  background-color: #ffbeaf22;
+  background-color: #FFBEAF22;
   padding: 16px;
   border-radius: 12px;
   text-align: left;
@@ -62,7 +61,7 @@ input[type='number'] {
 
 .result h3 {
   margin-top: 12px;
-  color: #283cff;
+  color: #283CFF;
   font-size: 24px;
   font-weight: 700;
 }
@@ -76,7 +75,7 @@ input[type='number'] {
 .assumptions summary {
   cursor: pointer;
   font-weight: 600;
-  color: #283cff;
+  color: #283CFF;
 }
 
 .assumptions ul {
