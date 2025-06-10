@@ -1,22 +1,3 @@
-function animateValue(id, start, end, duration = 500) {
-  const obj = document.getElementById(id);
-  const range = end - start;
-  let startTime = null;
-
-  function step(timestamp) {
-    if (!startTime) startTime = timestamp;
-    const progress = Math.min((timestamp - startTime) / duration, 1);
-    const value = Math.round(start + range * progress);
-    obj.textContent = value.toLocaleString();
-    if (progress < 1) {
-      window.requestAnimationFrame(step);
-    }
-  }
-
-  window.requestAnimationFrame(step);
-}
-
-
 function updateOrderValue() {
   const orders = parseInt(document.getElementById('orders').value);
   document.getElementById('orderValue').textContent = orders;
@@ -40,11 +21,10 @@ function calculateAll() {
 
   const total = errorCost + inefficiencyCost + missedRevenue;
 
-  animateValue('errorsCost', Number(document.getElementById('errorsCost').textContent.replace(/,/g, '')), errorCost);
-animateValue('timeCost', Number(document.getElementById('timeCost').textContent.replace(/,/g, '')), inefficiencyCost);
-animateValue('missedRevenue', Number(document.getElementById('missedRevenue').textContent.replace(/,/g, '')), missedRevenue);
-animateValue('total', Number(document.getElementById('total').textContent.replace(/,/g, '')), total);
-
+  document.getElementById('errorsCost').textContent = Math.round(errorCost).toLocaleString();
+  document.getElementById('timeCost').textContent = Math.round(inefficiencyCost).toLocaleString();
+  document.getElementById('missedRevenue').textContent = Math.round(missedRevenue).toLocaleString();
+  document.getElementById('total').textContent = Math.round(total).toLocaleString();
 }
 
 updateOrderValue();
