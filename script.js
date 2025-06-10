@@ -10,7 +10,7 @@ function calculateAll() {
 
   const errorCost = orders * errorRate * aov * grossMargin;
 
-  // Example: 1.5 minutes saved per order
+  // Dynamic inefficiency cost: 1.5 minutes saved per order
   const timeSavedPerOrderHours = 1.5 / 60;
   const inefficiencyCost = orders * timeSavedPerOrderHours * hourlyWage;
 
@@ -19,8 +19,8 @@ function calculateAll() {
 
   const total = errorCost + inefficiencyCost + missedRevenue;
 
+  console.log('orders:', orders, 'inefficiencyCost:', inefficiencyCost);  // Debug
+
   document.getElementById('errorsCost').textContent = Math.round(errorCost).toLocaleString();
   document.getElementById('timeCost').textContent = Math.round(inefficiencyCost).toLocaleString();
-  document.getElementById('missedRevenue').textContent = Math.round(missedRevenue).toLocaleString();
-  document.getElementById('total').textContent = Math.round(total).toLocaleString();
-}
+  document.getElementById('missedRevenue').textContent = Math.round(missedRevenu
