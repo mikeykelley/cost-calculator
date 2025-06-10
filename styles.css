@@ -103,7 +103,6 @@ input[type="number"] {
   justify-content: flex-start;
   padding: 32px 24px;
   font-size: 18px;
-  /* incomplete in your snippet — you can complete if needed */
 }
 
 /* New ROI box styling */
@@ -123,4 +122,11 @@ input[type="number"] {
   color: #0B8457; /* Deeper green for heading */
   font-size: 22px;
   font-weight: 700;
+}
+
+/* Make the ROI multiplier number bigger */
+#roiMultiplier {
+  font-size: 32px;
+  font-weight: 800;
+  color: #0B8457; /* Optional: same green as heading */
 }
