@@ -1,3 +1,5 @@
+console.log("script.js loaded");
+
 // Update order value display & recalc
 function updateOrderValue() {
   const orders = parseInt(document.getElementById('orders').value);
