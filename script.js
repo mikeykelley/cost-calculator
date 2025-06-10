@@ -31,4 +31,14 @@ function calculateAll() {
   document.getElementById('total').textContent = Math.round(total).toLocaleString();
 }
 
-updateOrderValue();
+// Attach event listeners after DOM is loaded
+window.addEventListener('DOMContentLoaded', () => {
+  const ordersInput = document.getElementById('orders');
+  const aovInput = document.getElementById('aov');
+
+  ordersInput.addEventListener('input', updateOrderValue);
+  aovInput.addEventListener('input', calculateAll);
+
+  // Initialize values on page load
+  updateOrderValue();
+});
