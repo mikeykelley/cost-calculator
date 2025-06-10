@@ -1,12 +1,9 @@
-// Cache DOM elements for performance
-const ordersInput = document.getElementById('orders');
-const aovInput = document.getElementById('aov');
-const orderValueDisplay = document.getElementById('orderValue');
-const errorsCostDisplay = document.getElementById('errorsCost');
-const timeCostDisplay = document.getElementById('timeCost');
-const missedRevenueDisplay = document.getElementById('missedRevenue');
-const totalDisplay = document.getElementById('total');
-const zenstoresPriceDisplay = document.getElementById('zenstoresPrice');
+// Update displayed orders and recalc
+function updateOrderValue() {
+  const orders = parseInt(document.getElementById('orders').value);
+  document.getElementById('orderValue').textContent = orders.toLocaleString();
+  calculateAll();
+}
 
 function calculateZenstoresPrice(orders) {
   // Plan A: £79 + £0.07 per shipment
@@ -18,10 +15,8 @@ function calculateZenstoresPrice(orders) {
 }
 
 function calculateAll() {
-  const orders = parseInt(ordersInput.value) || 0;
-  const aov = parseFloat(aovInput.value) || 0;
-
-  orderValueDisplay.textContent = orders.toLocaleString();
+  const orders = parseInt(document.getElementById('orders').value);
+  const aov = parseFloat(document.getElementById('aov').value) || 0;
 
   const grossMargin = 0.5;
   const hourlyWage = 12;
@@ -41,18 +36,26 @@ function calculateAll() {
 
   const total = errorCost + inefficiencyCost + missedRevenue;
 
-  errorsCostDisplay.textContent = Math.round(errorCost).toLocaleString();
-  timeCostDisplay.textContent = Math.round(inefficiencyCost).toLocaleString();
-  missedRevenueDisplay.textContent = Math.round(missedRevenue).toLocaleString();
-  totalDisplay.textContent = Math.round(total).toLocaleString();
+  // Update displayed costs
+  document.getElementById('errorsCost').textContent = Math.round(errorCost).toLocaleString();
+  document.getElementById('timeCost').textContent = Math.round(inefficiencyCost).toLocaleString();
+  document.getElementById('missedRevenue').textContent = Math.round(missedRevenue).toLocaleString();
+  document.getElementById('total').textContent = Math.round(total).toLocaleString();
 
+  // Calculate and update Zenstores pricing
   const zenPrice = calculateZenstoresPrice(orders);
-  zenstoresPriceDisplay.textContent = zenPrice.toFixed(2);
+  document.getElementById('zenstoresPrice').textContent = zenPrice.toFixed(2);
 }
 
-// Add event listeners
-ordersInput.addEventListener('input', calculateAll);
-aovInput.addEventListener('input', calculateAll);
+// Set event listeners after DOM loads
+window.addEventListener('DOMContentLoaded', () => {
+  const ordersInput = document.getElementById('orders');
+  const aovInput = document.getElementById('aov');
 
-// Initial calculation
-calculateAll();
+  ordersInput.addEventListener('input', updateOrderValue);
+  aovInput.addEventListener('input', calculateAll);
+
+  // Initialize values on load
+  updateOrderValue();
+});
+
