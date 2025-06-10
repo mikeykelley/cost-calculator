@@ -1,3 +1,4 @@
+// Update displayed orders and recalc
 function updateOrderValue() {
   const orders = parseInt(document.getElementById('orders').value);
   document.getElementById('orderValue').textContent = orders.toLocaleString();
@@ -45,12 +46,25 @@ function calculateAll() {
   const zenPrice = calculateZenstoresPrice(orders);
   document.getElementById('zenstoresPrice').textContent = zenPrice.toFixed(2);
 
-  // Calculate ROI multiplier: totalSavings / zenPrice, minimum 0, rounded to 1 decimal
-  let roi = zenPrice > 0 ? totalSavings / zenPrice : 0;
+  // Calculate ROI multiplier (total savings divided by lowest Zenstores price)
+  let roi = 0;
+  if (zenPrice > 0 && totalSavings > 0) {
+    roi = totalSavings / zenPrice;
+  }
   roi = roi < 0 ? 0 : roi;
-  document.getElementById('roiMultiplier').textContent = roi.toFixed(1);
+
+  // Update ROI display (1 decimal place)
+  document.getElementById('roiMultiplier').textContent = isNaN(roi) ? '0' : roi.toFixed(1);
 }
 
 // Set event listeners after DOM loads
 window.addEventListener('DOMContentLoaded', () => {
   const ordersInput = document.getElementById('orders');
+  const aovInput = document.getElementById('aov');
+
+  ordersInput.addEventListener('input', updateOrderValue);
+  aovInput.addEventListener('input', calculateAll);
+
+  // Initialize values on load
+  updateOrderValue();
+});
