@@ -1,38 +1,51 @@
-<div class="calculator-container">
-  <div class="calculator current-logic">
-    <h2>Operational Cost Calculator</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ROI Calculator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="calculator-container">
+    <div class="calculator left-section">
+      <h2>Operational Cost Calculator</h2>
 
-    <label for="orders">Monthly Orders: <span id="orderValue">250</span></label>
-    <input type="range" id="orders" min="250" max="25000" value="250" step="250" />
+      <label for="orders">Monthly Orders: <span id="orderValue">250</span></label>
+      <input type="range" id="orders" min="250" max="25000" value="250" step="250" />
 
-    <label for="aov">Average Order Value (£):</label>
-    <input type="number" id="aov" value="50" min="0" />
+      <label for="aov">Average Order Value (£):</label>
+      <input type="number" id="aov" value="50" min="0" />
 
-    <div class="result">
-      <p><strong>Estimated Monthly Impact:</strong></p>
-      <p>❌ Fulfilment Errors: <strong>£<span id="errorsCost">0</span></strong></p>
-      <p>🕒 Inefficiencies: <strong>£<span id="timeCost">0</span></strong></p>
-      <p>📉 Missed Revenue: <strong>£<span id="missedRevenue">0</span></strong></p>
-      <hr>
-      <h3>Total: £<span id="total">0</span></h3>
+      <div class="result">
+        <p><strong>Estimated Monthly Impact:</strong></p>
+        <p>❌ Fulfilment Errors: <strong>£<span id="errorsCost">0</span></strong></p>
+        <p>🕒 Inefficiencies: <strong>£<span id="timeCost">0</span></strong></p>
+        <p>📉 Missed Revenue: <strong>£<span id="missedRevenue">0</span></strong></p>
+        <hr />
+        <h3>Total: £<span id="total">0</span></h3>
+      </div>
+
+      <div class="assumptions">
+        <details>
+          <summary>What's this based on?</summary>
+          <ul>
+            <li>~0.5% of orders contain a fulfilment error</li>
+            <li>Saving ~3 hours/day on manual workflows @ £12/hr</li>
+            <li>10% uplift on 3% baseline conversion rate</li>
+            <li>Costs assume 50% gross margin on each order</li>
+          </ul>
+        </details>
+      </div>
     </div>
 
-    <div class="assumptions">
-      <details>
-        <summary>What's this based on?</summary>
-        <ul>
-          <li>~0.5% of orders contain a fulfilment error</li>
-          <li>Saving ~3 hours/day on manual workflows @ £12/hr</li>
-          <li>10% uplift on 3% baseline conversion rate</li>
-          <li>Costs assume 50% gross margin on each order</li>
-        </ul>
-      </details>
+    <div class="calculator right-section">
+      <h2>ROI & Zenstores Pricing</h2>
+      <p><strong>Zenstores Cost: £<span id="zenstoresPrice">0</span></strong></p>
+      <p><strong>ROI: <span id="roiRatio">0</span>x</strong></p>
     </div>
   </div>
 
-  <div class="calculator zenstores-pricing">
-    <h2>Zenstores Pricing Estimate</h2>
-    <p>Based on your monthly shipments:</p>
-    <p><strong>Starts from: £<span id="zenstoresPrice">0</span></strong></p>
-  </div>
-</div>
+  <script src="script.js"></script>
+</body>
+</html>
