@@ -5,6 +5,7 @@ function updateOrderValue() {
   calculateAll();
 }
 
+// Calculate the cheapest Zenstores plan price
 function calculateZenstoresPrice(orders) {
   // Plan A: £79 + £0.07 per shipment
   const planA = 79 + orders * 0.07;
@@ -14,6 +15,7 @@ function calculateZenstoresPrice(orders) {
   return Math.min(planA, planB);
 }
 
+// Main calculation function
 function calculateAll() {
   const orders = parseInt(document.getElementById('orders').value);
   const aov = parseFloat(document.getElementById('aov').value) || 0;
@@ -46,15 +48,12 @@ function calculateAll() {
   const zenPrice = calculateZenstoresPrice(orders);
   document.getElementById('zenstoresPrice').textContent = zenPrice.toFixed(2);
 
-  // Calculate ROI multiplier (total savings divided by lowest Zenstores price)
+  // Calculate and update ROI multiplier = savings / price (rounded 1 decimal)
   let roi = 0;
-  if (zenPrice > 0 && totalSavings > 0) {
+  if (zenPrice > 0) {
     roi = totalSavings / zenPrice;
   }
-  roi = roi < 0 ? 0 : roi;
-
-  // Update ROI display (1 decimal place)
-  document.getElementById('roiMultiplier').textContent = isNaN(roi) ? '0' : roi.toFixed(1);
+  document.getElementById('roiMultiplier').textContent = roi.toFixed(1) + 'x';
 }
 
 // Set event listeners after DOM loads
