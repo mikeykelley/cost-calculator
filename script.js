@@ -29,8 +29,10 @@ function calculateAll() {
   // 1. Cost of fulfilment errors
   const errorCost = orders * errorRate * aov * grossMargin;
 
-  // 2. Cost of inefficiencies (3 hrs/day * 30 days * £12)
-  const inefficiencyCost = 3 * 30 * hourlyWage;
+  // 2. Cost of inefficiencies - 3 minutes per order
+  const inefficiencyMinutes = orders * 3;
+  const inefficiencyHours = inefficiencyMinutes / 60;
+  const inefficiencyCost = inefficiencyHours * hourlyWage;
 
   // 3. Missed revenue from lower conversion
   const upliftOrders = orders * conversionRate * conversionUplift;
