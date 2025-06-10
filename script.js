@@ -78,3 +78,8 @@ document.getElementById('aov').addEventListener('input', calculateAll);
 
 // Initialise on load
 updateOrderValue();
+
+document.querySelector('.messages').style.display = 'block';
+document.getElementById('contextualBenefits').innerHTML = '<li>Test benefit 1</li><li>Test benefit 2</li>';
+document.getElementById('customRecommendation').textContent = 'Test recommendation';
+
