@@ -7,11 +7,8 @@ function updateOrderValue() {
 
 // Calculate the cheapest Zenstores plan price
 function calculateZenstoresPrice(orders) {
-  // Plan A: £79 + £0.07 per shipment
   const planA = 79 + orders * 0.07;
-  // Plan B: £159 + £0.04 per shipment
   const planB = 159 + orders * 0.04;
-
   return Math.min(planA, planB);
 }
 
@@ -38,5 +35,39 @@ function calculateAll() {
   const conversionUplift = 0.10; // +10%
 
   // 1. Cost of fulfilment errors
-  const errorCost = orders
+  const errorLoss = orders * errorRate * aov * grossMargin;
 
+  // 2. Cost of manual time saved (3 minutes/order = 0.05 hour/order)
+  const timeSaved = orders * 0.05 * hourlyWage;
+
+  // 3. Missed revenue from delivery uplift
+  const baseRevenue = orders * aov;
+  const upliftedRevenue = baseRevenue * conversionRate * conversionUplift * grossMargin;
+
+  // Total savings
+  const totalSavings = errorLoss + timeSaved + upliftedRevenue;
+
+  // Zenstores cost
+  const zenstoresCost = calculateZenstoresPrice(orders);
+
+  // ROI
+  const roi = zenstoresCost > 0 ? totalSavings / zenstoresCost : 0;
+
+  // Update DOM
+  document.getElementById('errorsCost').textContent = errorLoss.toFixed(0);
+  document.getElementById('timeCost').textContent = timeSaved.toFixed(0);
+  document.getElementById('missedRevenue').textContent = upliftedRevenue.toFixed(0);
+  document.getElementById('total').textContent = totalSavings.toFixed(0);
+  document.getElementById('zenstoresPrice').textContent = zenstoresCost.toFixed(0);
+  document.getElementById('roiMultiplier').textContent = roi.toFixed(1) + 'x';
+
+  // Persona message
+  document.getElementById('personaMessage').innerHTML = getPersonaMessage(orders);
+}
+
+// Event listeners
+document.getElementById('orders').addEventListener('input', updateOrderValue);
+document.getElementById('aov').addEventListener('input', calculateAll);
+
+// Initial calculation
+updateOrderValue();
