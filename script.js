@@ -39,3 +39,4 @@ function calculateAll() {
 
   // 1. Cost of fulfilment errors
   const errorCost = orders
+
